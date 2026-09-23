@@ -14,11 +14,11 @@ services:
   mongodb:
     volumes:
       - mongodb:/data/db
-    image: adithyagorapalli/mongodb:v1
+    image: nagavarapudille/mongodb:v1
     container_name: mongodb
 
   catalogue:
-    image: adithyagorapalli/catalogue:v1
+    image: nagavarapudille/catalogue:v1
     container_name: catalogue
     depends_on:
       - mongodb
@@ -30,14 +30,14 @@ services:
     container_name: redis
 
   user:
-    image: adithyagorapalli/user:v1
+    image: nagavarapudille/user:v1
     container_name: user
     depends_on:
       - redis
       - mongodb
 
   cart:
-    image: adithyagorapalli/cart:v1
+    image: nagavarapudille/cart:v1
     container_name: cart
     depends_on:
       - catalogue
@@ -46,11 +46,11 @@ services:
   mysql:
     volumes:
       - mysql:/var/lib/mysql
-    image: adithyagorapalli/mysql:v1
+    image: nagavarapudille/mysql:v1
     container_name: mysql
 
   shipping:
-    image: adithyagorapalli/shipping:v1
+    image: nagavarapudille/shipping:v1
     container_name: shipping
     depends_on:
       - mysql
@@ -66,7 +66,7 @@ services:
       RABBITMQ_DEFAULT_PASS: roboshop123
 
   payment:
-    image: adithyagorapalli/payment:v1
+    image: nagavarapudille/payment:v1
     container_name: payment
     environment:
       CART_HOST: cart
@@ -82,7 +82,7 @@ services:
       - user
 
   frontend:
-    image: adithyagorapalli/frontend:v1
+    image: nagavarapudille/frontend:v1
     container_name: frontend
     ports:
       - "80:80"

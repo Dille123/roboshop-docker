@@ -23,6 +23,8 @@ ADD nginx.conf /etc/nginx/nginx.conf
 
 ADD static /usr/share/nginx/html/
 
+##dille forntend
+
 USER nginx
 
 CMD ["nginx", "-g", "daemon off;"]
